@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const primary = Color(0xFFFF4D67);
   static const secondary = Color(0xFFFFD300);
-
   static const success = Color(0xFF4ADE80);
   static const info = Color(0xFF246BFD);
   static const warning = Color(0xFFFACC15);
   static const error = Color(0xFF757575);
   static const disabled = Color(0xFFD8D8D8);
-  static const disButton = Color(0xFFE8808F);
+  static const disButton = Color(0xFFE98090);
 
 // GreyScale
   static const grey900 = Color(0xFF212121);

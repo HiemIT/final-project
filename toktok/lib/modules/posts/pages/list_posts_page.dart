@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:toktok/themes/app_colors.dart';
-import 'package:toktok/themes/text_styles.dart';
 
 import '../../../utils/uiData.dart';
-import '../widgets/stateless/post_item.dart';
+import '../widgets/statefull/post_item.dart';
 
 class ListPostsPage extends StatefulWidget {
   const ListPostsPage({super.key});
@@ -15,6 +15,8 @@ class ListPostsPage extends StatefulWidget {
 class _ListPostsPageState extends State<ListPostsPage> {
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final iconColor = Theme.of(context).iconTheme;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -27,15 +29,13 @@ class _ListPostsPageState extends State<ListPostsPage> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset(UIData.imgLogo),
+                      SvgPicture.asset(UIData.iconLogo, width: 32, height: 32),
                       const SizedBox(
                         width: 20,
                       ),
                       Text(
                         'TokTok',
-                        style: TextStyles.heading4.copyWith(
-                          color: AppColors.white,
-                        ),
+                        style: textTheme.headlineSmall,
                         textHeightBehavior: const TextHeightBehavior(
                           applyHeightToFirstAscent: false,
                           applyHeightToLastDescent: false,
@@ -52,9 +52,9 @@ class _ListPostsPageState extends State<ListPostsPage> {
                         const Spacer(),
                         IconButton(
                           onPressed: () {},
-                          icon: const ImageIcon(
-                            AssetImage(UIData.iconHeart),
-                            color: AppColors.white,
+                          icon: ImageIcon(
+                            const AssetImage(UIData.iconHeart),
+                            color: iconColor.color,
                           ),
                         ),
                         const SizedBox(
@@ -70,9 +70,9 @@ class _ListPostsPageState extends State<ListPostsPage> {
                           ),
                           child: IconButton(
                             onPressed: () {},
-                            icon: const ImageIcon(
-                              AssetImage(UIData.iconChat),
-                              color: AppColors.white,
+                            icon: ImageIcon(
+                              const AssetImage(UIData.iconChat),
+                              color: iconColor.color,
                             ),
                           ),
                         ),
@@ -86,7 +86,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
               const SizedBox(
                 height: 20,
               ),
-              PostItem(),
+              const PostItem(),
             ],
           ),
         ),

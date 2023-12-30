@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../blocs/theme/theme_bloc.dart';
 import '../modules/dashboard/pages/dashboard_page.dart';
 
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(
-          builder: (_) => const DashboardPage(),
+        return _buildRoute(
+          settings,
+          BlocProvider(
+              create: (context) => ThemeBloc(), child: const DashboardPage()),
         );
       default:
         return _errorRoute();
@@ -18,11 +22,11 @@ class Routes {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => DashboardPage(),
+          builder: (_) => const DashboardPage(),
         );
       default:
         return MaterialPageRoute(
-          builder: (_) => DashboardPage(),
+          builder: (_) => const DashboardPage(),
         );
     }
   }
@@ -38,5 +42,12 @@ class Routes {
         ),
       );
     });
+  }
+
+  static MaterialPageRoute _buildRoute(RouteSettings settings, Widget builder) {
+    return MaterialPageRoute(
+      settings: settings,
+      builder: (BuildContext context) => builder,
+    );
   }
 }

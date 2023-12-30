@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toktok/modules/posts/pages/list_posts_page.dart';
+import 'package:toktok/modules/profile/pages/setting_page.dart';
 import 'package:toktok/themes/app_colors.dart';
 import 'package:toktok/utils/uiData.dart';
 
@@ -20,8 +21,9 @@ class _DashboardPageState extends State<DashboardPage> {
     Container(),
     Container(),
     Container(),
-    Container(),
+    const SettingScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +75,6 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ],
         currentIndex: _index,
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.grey500,
-        backgroundColor: AppColors.dark3,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
         onTap: onTabTapped,
